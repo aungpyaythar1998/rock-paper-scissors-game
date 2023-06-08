@@ -16,65 +16,71 @@
         }
 
         function playRound(playerSelection, computerSelection) {
-            let winner;
-            let loser;
             let roundResult;
-            playerSelection = playerSelection.toLowerCase();
-
-            const winningMessage = "You Win";
-            const losingMessage = "You Lose";
-            const drawMessage = `It's a draw! Both picked ${playerSelection}.`;
-            const invalidChoiceMessage = "Invalid choice. You must picked either Rock, Paper or Scissor.";
+            const winningMessage = "win";
+            const losingMessage = "lose";
+            const drawMessage = "draw"
+            const invalidChoiceMessage = "invalid";
 
             if (playerSelection === computerSelection) {
                 return drawMessage;
             } 
-            
+
             switch(playerSelection) {
                 case "rock":
-                    if (computerSelection === "scissor") {
-                        roundResult = winningMessage;
-                        winner = playerSelection;
-                        loser = computerSelection
-                    } else {
-                        roundResult = losingMessage;
-                        winner = computerSelection;
-                        loser = playerSelection;
-                    }
-                    break;
+                    roundResult = (computerSelection === "scissor") ? winningMessage : losingMessage;
                 case "paper":
-                    if (computerSelection === "rock") {
-                        roundResult = winningMessage;
-                        winner = playerSelection;
-                        loser = computerSelection
-                    }
-                    else {
-                        roundResult = losingMessage;
-                        winner = computerSelection;
-                        loser = playerSelection
-                    }
+                    roundResult = (computerSelection === "rock") ? winningMessage : losingMessage;
                     break;
                 case "scissor":
-                    if (computerSelection === "paper") {
-                        roundResult = winningMessage;
-                        winner = playerSelection;
-                        loser = computerSelection
-                    }
-                    else {
-                        roundResult = losingMessage;
-                        winner = computerSelection;
-                        loser = playerSelection
-                    }
+                    roundResult = (computerSelection === "paper") ? winningMessage : losingMessage;
                     break;
                 default:
                     return invalidChoiceMessage;
             }
-            return `${roundResult}! ${winner} beats ${loser}`;
+            return roundResult;
         }
 
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            let finalResult;
 
+            for(let i = 0; i < 5; i++) {
+                let playeInput;
+                let playerSelection;
+                let computerSelection;
+                let roundPrompt = `[Round ${i + 1}/5]`;
+
+                playerInput = prompt(`${roundPrompt} Enter your choice (rock, paper, scissor): `);
+                playerSelection = playerInput.toLowerCase();
+                computerSelection = getComputerChoice();
+                result = playRound(playerSelection, computerSelection);
+                if (result === "win") {
+                    playerScore += 1;
+                    console.log(`${roundPrompt} You win! ${playerSelection} beats ${computerSelection}.`);
+                }
+                else if (result === "lose") {
+                    computerScore += 1;
+                    console.log(`${roundPrompt} You lose! ${computerSelection} beats ${playerSelection}.`);
+                }
+                else if (result === "draw") {
+                    console.log(`${roundPrompt} Draw! Both picked ${playerSelection}`)
+                } 
+                else {
+                    console.log(`Invalid input "${playerSelection}". Only enter either rock, paper or scissor`);
+                    i--;
+                }
+            }
+            
+            if (playerScore > computerScore) {
+                finalResult = "won";
+            } else if (playerScore < computerScore) {
+                finalResult = "lost"
+            } else {
+                finalReslt = "drew";
+            }
+            console.log(`You ${result} the game scoring ${playerScore} vs ${computerScore} against computer.`);
+        }
     </script> 
 </html>

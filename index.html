@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple Rock-Paper-Scissors Game</title>
+    </head>
+    <body>
+    </body>
+    <script>
+        function getComputerChoice() {
+            let options = ["rock", "paper", "scissor"];
+            let randomChoice = Math.floor(Math.random() * 3);
+            return options[randomChoice];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let winner = "";
+            let loser = "";
+            playerSelection = playerSelection.toLowerCase();
+
+            const winningMessage = "You Win";
+            const losingMessage = "You Lose";
+            const drawMessage = `It's a draw! Both picked ${playerSelection}.`;
+            const invalidChoiceMessage = "Invalid choice. You must picked either Rock, Paper or Scissor.";
+
+            if (playerSelection === computerSelection) {
+                return drawMessage;
+            } 
+            
+            switch(playerSelection) {
+                case "rock":
+                    if (computerSelection === "scissor") {
+                        roundResult = winningMessage;
+                        winner = playerSelection;
+                        loser = computerSelection
+                    } else {
+                        roundResult = losingMessage;
+                        winner = computerSelection;
+                        loser = playerSelection;
+                    }
+                    break;
+                case "paper":
+                    if (computerSelection === "rock") {
+                        roundResult = winningMessage;
+                        winner = playerSelection;
+                        loser = computerSelection
+                    }
+                    else {
+                        roundResult = losingMessage;
+                        winner = computerSelection;
+                        loser = playerSelection
+                    }
+                    break;
+                case "scissor":
+                    if (computerSelection === "paper") {
+                        roundResult = winningMessage;
+                        winner = playerSelection;
+                        loser = computerSelection
+                    }
+                    else {
+                        roundResult = losingMessage;
+                        winner = computerSelection;
+                        loser = playerSelection
+                    }
+                    break;
+                default:
+                    return invalidChoiceMessage;
+            }
+            return `${roundResult}! ${winner} beats ${loser}`;
+        }
+
+        const playerSelection = "paper";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+
+    </script> 
+</html>

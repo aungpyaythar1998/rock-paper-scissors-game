@@ -7,90 +7,9 @@
         <title>Simple Rock-Paper-Scissors Game</title>
     </head>
     <body>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissor">Scissor</button>
+        <div id="result">Result</div>
     </body>
-    <script>
-
-        function winIfEqual(selection, winCondition) {
-            let result;
-            result = (selection === winCondition) ? "win" : "lose";
-            return result;
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            let roundResult;
-
-            if (playerSelection === computerSelection) {
-                return "draw";
-            } 
-
-            switch(playerSelection) {
-                case "rock":
-                    roundResult = winIfEqual(computerSelection, "scissor");
-                    break;
-                case "paper":
-                    roundResult = winIfEqual(computerSelection, "rock");
-                    break;
-                case "scissor":
-                    roundResult = winIfEqual(computerSelection, "paper");
-                    break;
-                default:
-                    return "invalid";
-            }
-            return roundResult;
-        }
-
-
-        function getComputerChoice() {
-            let options = ["rock", "paper", "scissor"];
-            let randomChoice = Math.floor(Math.random() * 3);
-            return options[randomChoice];
-        }
-
-
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            let finalResult;
-
-            for(let i = 0; i < 5; i++) {
-                let playeInput;
-                let playerSelection;
-                let computerSelection;
-                let roundPrompt = `[Round ${i + 1}/5]`;
-
-                playerInput = prompt(`${roundPrompt} Enter your choice (rock, paper, scissor): `);
-                playerSelection = playerInput.toLowerCase();
-                computerSelection = getComputerChoice();
-
-                result = playRound(playerSelection, computerSelection);
-                if (result === "win") {
-                    playerScore += 1;
-                    console.log(`${roundPrompt} You win! ${playerSelection} beats ${computerSelection}.`);
-                }
-                else if (result === "lose") {
-                    computerScore += 1;
-                    console.log(`${roundPrompt} You lose! ${computerSelection} beats ${playerSelection}.`);
-                }
-                else if (result === "draw") {
-                    console.log(`${roundPrompt} Draw! Both picked ${playerSelection}`)
-                } 
-                else {
-                    console.log(`Invalid input "${playerSelection}". Only enter either rock, paper or scissor`);
-                    i--;
-                }
-            }
-            
-            if (playerScore > computerScore) {
-                finalResult = "won";
-            } else if (playerScore < computerScore) {
-                finalResult = "lost"
-            } else {
-                finalReslt = "drew";
-            }
-            
-            console.log(`You ${result} the game scoring ${playerScore} vs ${computerScore} against computer.`);
-        }
-
-        game();
-    </script> 
 </html>

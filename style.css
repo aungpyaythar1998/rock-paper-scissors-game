@@ -107,14 +107,12 @@ header {
 #button-container {
     flex: 1;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border: 3px solid #cecfca;
-    padding: 0 0.3em;
+    padding: 0 0.2em;
 }
 
 button {
-    width: 32%;
     height: 58px;
     display: inline-block;
     border: none;
@@ -122,6 +120,8 @@ button {
     font-size: 1.2em;
     color: white;
     background: #3399c4;
+    margin: 0.2em;
+    flex: 1;
 }
 
 button:hover {

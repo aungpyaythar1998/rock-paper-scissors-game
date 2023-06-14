@@ -10,21 +10,42 @@
     </head>
     <body>
         <div class="container">
-            <div class="score-container">
-                <div class="player-name">User Score</div>
-                <div id="user-score">0</div>
+            <header>
+                <span class="heading">A Game of Rock-Paper-Scissor</span>
+                <span class="heading">The first to 5 wins!</span>
+            </header>
+            <div class="row">
+                <div class="banner">
+                    <span class="banner-text">Scoreboard</span>
+                </div>
+                <div class="score-container-parent">
+                    <div class="score-container">
+                        <div class="player-name">User Score</div>
+                        <div id="user-score">0</div>
+                    </div>
+                    <div class="score-container">
+                        <div class="player-name">Computer Score</div>
+                        <div id="computer-score">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="score-container">
-                <div class="player-name">Computer Score</div>
-                <div id="computer-score">0</div>
+            <div class="row">
+                <div class="banner">
+                    <span class="banner-text">Computer Choice</span>
+                </div>
+                <div id="choice-container">
+                    <div id="computer-choice"></div>
+                </div>
             </div>
-            <div id="choice-container">
-                <div class="choice">Computer Choice - [ <span id="computer-choice"></span> ]</div>
-            </div>
-            <div id="button-container">
-                <button id="rock">Rock</button>
-                <button id="paper">Paper</button>
-                <button id="scissor">Scissor</button>
+            <div class="row">
+                <div class="banner">
+                    <span class="banner-text">Your Choice</span>
+                </div>
+                <div id="button-container">
+                    <button id="rock">Rock</button>
+                    <button id="paper">Paper</button>
+                    <button id="scissor">Scissor</button>
+                </div>
             </div>
             <div id="result"><span>Result will be displayed here</span></div>
         </div>

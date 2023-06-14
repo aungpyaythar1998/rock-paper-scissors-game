@@ -29,14 +29,13 @@ function playRound(playerSelection, computerSelection) {
 function resetGame() {
     userScore = 0;
     computerScore = 0;
+    updateComputerChoiceUI("");
     updateUserScoreUI(userScore);
     updateComputerScoreUI(computerScore);
 }
 
 function announceWinner() {
-    if (userScore == roundsToWin && computerScore == roundsToWin) {
-        resultDisplay.textContent = "You drew ";
-    } else if (userScore == roundsToWin) {
+    if (userScore == roundsToWin) {
         resultDisplay.textContent = "You won ";
     } else if (computerScore == roundsToWin) {
         resultDisplay.textContent = "You lost ";
@@ -52,7 +51,7 @@ function updateComputerScoreUI(score) {
     computerScoreUI.textContent = score;
 }
 
-function announceComputerChoice(choice) {
+function updateComputerChoiceUI(choice) {
     const computerChoiceUI = document.querySelector("#computer-choice");
     computerChoiceUI.textContent = choice;
 }
@@ -68,7 +67,7 @@ function playGame(e) {
     const userChoice = e.target.id;
     const computerChoice = getComputerChoice();
 
-    announceComputerChoice(computerChoice);
+    updateComputerChoiceUI(computerChoice);
     const roundResult = playRound(userChoice, computerChoice);
     if (roundResult == "win") {
         userScore += 1;
@@ -76,12 +75,7 @@ function playGame(e) {
     } else if (roundResult == "lose") {
         computerScore += 1;
         updateComputerScoreUI(computerScore);
-    } else if (roundResult == "draw") {
-        userScore += 1;
-        updateUserScoreUI(userScore);
-        computerScore += 1;
-        updateComputerScoreUI(computerScore);
-    }
+    } 
 
     if(userScore == roundsToWin || computerScore == roundsToWin) {
         announceWinner();

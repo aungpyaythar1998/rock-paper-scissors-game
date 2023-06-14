@@ -29,6 +29,8 @@ function playRound(playerSelection, computerSelection) {
 function resetGame() {
     userScore = 0;
     computerScore = 0;
+    currentRound = 0;
+    updateRoundNumberUI(0);
     updateComputerChoiceUI("");
     updateUserScoreUI(userScore);
     updateComputerScoreUI(computerScore);
@@ -62,11 +64,17 @@ function getComputerChoice() {
     return options[randomChoice];
 }
 
+function updateRoundNumberUI(roundNumber) {
+    const roundNumberUI = document.querySelector("#round-number");
+    roundNumberUI.textContent = roundNumber;
+}
 
 function playGame(e) {
     const userChoice = e.target.id;
     const computerChoice = getComputerChoice();
 
+    currentRound++;
+    updateRoundNumberUI(currentRound);
     updateComputerChoiceUI(computerChoice);
     const roundResult = playRound(userChoice, computerChoice);
     if (roundResult == "win") {
@@ -86,6 +94,7 @@ function playGame(e) {
 
 let userScore = 0;
 let computerScore = 0;
+let currentRound = 0;
 const userScoreUI = document.querySelector("#user-score");
 const computerScoreUI = document.querySelector("#computer-score");
 const resultDisplay = document.querySelector("#result");

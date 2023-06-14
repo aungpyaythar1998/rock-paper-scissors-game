@@ -58,7 +58,7 @@ header {
     border: 3px solid #cecfca;
 }
 
-.score-container {
+#round-banner, .score-container {
     border-radius: 0.4em;
     margin: 0.2em;
     padding: 0.5em;
@@ -66,11 +66,15 @@ header {
     flex: 1;    
 }
 
-.score-container:nth-child(1) {
+#round-banner {
+    padding-top: 1.2em;
+    background: #56630c;
+}
+.score-container:nth-of-type(2) {
     background: #5061a6;
 }
 
-.score-container:nth-child(2) {
+.score-container:nth-of-type(3) {
     background: #cc121f;
 }
 

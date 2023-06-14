@@ -41,7 +41,7 @@ function announceWinner() {
     } else if (computerScore == roundsToWin) {
         resultDisplay.textContent = "You lost ";
     }
-    resultDisplay.textContent += `${userScore} vs ${computerScore} against computer!`
+    resultDisplay.textContent += `${userScore} vs ${computerScore} against computer!`;
 }
 
 function updateUserScoreUI(score) {
